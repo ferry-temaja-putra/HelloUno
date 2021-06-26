@@ -32,5 +32,24 @@ namespace HelloUno
 
             TodoText.Text = "";
         }
+
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var confirmation = new ContentDialog()
+            {
+                Title = "Delete Confirmation",
+                Content = "Delete current item?",
+                IsPrimaryButtonEnabled = true,
+                PrimaryButtonText = "Yes",
+                CloseButtonText = "No"
+            };
+
+            var result = await confirmation.ShowAsync();
+
+            if (result != ContentDialogResult.Primary) return;
+
+            var item = (Todo)(sender as Button).DataContext;
+            TodoList.Remove(item);
+        }
     }
 }
