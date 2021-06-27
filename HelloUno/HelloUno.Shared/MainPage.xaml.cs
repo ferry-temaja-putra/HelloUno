@@ -31,6 +31,7 @@ namespace HelloUno
             });
 
             TodoText.Text = "";
+            TodoText.Focus(FocusState.Programmatic);
         }
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
